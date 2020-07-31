@@ -1,0 +1,29 @@
+{
+  "name": "four-li/utils",
+  "description": "混合常用工具",
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "four-li",
+      "email": "826726721@qq.com"
+    }
+  ],
+  "require": {
+    "php": ">=7.3.20",
+    "ipip/db": "^1.0",
+    "catfan/medoo": "^1.7",
+    "endroid/qr-code": "^3.5",
+    "khanamiryan/qrcode-detector-decoder": "^1.0",
+    "php-curl-class/php-curl-class": "^8.8",
+    "qcloudsms/qcloudsms_php": "^0.1.4"
+  },
+  "autoload": {
+    "psr-4": {
+      "FourLi\\Tools\\": "src/"
+    },
+    "files": [
+      "spl/helpers.php"
+    ]
+  }
+}
