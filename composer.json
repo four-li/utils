@@ -10,7 +10,7 @@
     }
   ],
   "require": {
-    "php": ">=7.3.20",
+    "php": ">=7.0",
     "ipip/db": "^1.0",
     "catfan/medoo": "^1.7",
     "endroid/qr-code": "^3.5",
