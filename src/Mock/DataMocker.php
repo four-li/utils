@@ -18,9 +18,9 @@ use Curl\Curl;
 class DataMocker
 {
     /**
-     * - 【 随机头像 】
+     * - 【 随机图 】
      */
-    function getAvatar(): string
+    function getRandomImage(): string
     {
         $curl = new Curl();
 
@@ -42,11 +42,49 @@ class DataMocker
     }
 
     /**
+     * - 【 获取批量头像 】
+     */
+    public function getAvatars(): array
+    {
+        $imgs = [];
+
+        $arr = [
+            '01', '02', '03', '04', '05', '06', '07','08','09','10','11', '12'
+        ];
+
+        foreach($arr as $item){
+            $url = 'https://four-li.oss-cn-shanghai.aliyuncs.com/demo-avatar/avatar'.$item.'.jpg';
+            $imgs[] = $url;
+        }
+
+        return $imgs;
+    }
+
+    /**
+     * - 【 获取批量照片 】
+     */
+    public function getImages() :array
+    {
+        $imgs = [];
+
+        $arr = [
+            '01', '02', '03', '04', '05', '06', '07','08','09','10','11', '12'
+        ];
+
+        foreach($arr as $item){
+            $url = 'https://four-li.oss-cn-shanghai.aliyuncs.com/demo-img/img'.$item.'.jpg';
+            $imgs[] = $url;
+        }
+
+        return $imgs;
+    }
+
+    /**
      * - i.e. 获得随机英文字符串
      *
-     * @param int  $len     生成的长度
-     * @param bool $case    默认小写 true为包含大写
-     * @param bool $num     默认为不含数字
+     * @param int $len 生成的长度
+     * @param bool $case 默认小写 true为包含大写
+     * @param bool $num 默认为不含数字
      * @param bool $special 默认没有符号
      * @return string
      */
@@ -73,7 +111,7 @@ class DataMocker
         $domains = ['qq', 'gmail', '163', 'yahoo', 'msn', 'hotmail', 'ask', 'live', '163.net', '263.net', 'yeah.net', 'mail', 'sohu', 'sina'];
         $domain  = $domains[array_rand($domains, 1)];
 
-        return $prefix . '@' . $domain . '.com';
+        return $prefix.'@'.$domain.'.com';
     }
 
     public function getNodeNo($length = 20): string
@@ -81,7 +119,7 @@ class DataMocker
         return substr(strtolower(substr(md5(serialize([
                 'time' => microtime(true),
                 's'    => mt_rand(10000, 99999999)
-            ])), 0, 30)) . strtolower(substr(md5(serialize([
+            ])), 0, 30)).strtolower(substr(md5(serialize([
                 'time' => microtime(true),
                 's'    => mt_rand(10000, 99999999)
             ])), 0, 30)), 0, $length);
@@ -97,7 +135,7 @@ class DataMocker
             180, 181, 182, 183, 184, 185, 186, 187, 188, 189,
         );
 
-        return (int)($arr[array_rand($arr)] . mt_rand(1000, 9999) . mt_rand(1000, 9999));
+        return (int)($arr[array_rand($arr)].mt_rand(1000, 9999).mt_rand(1000, 9999));
     }
 
     /**
@@ -119,9 +157,9 @@ class DataMocker
         $wei_num = rand(0, 327);
         $type    = rand(0, 0);
         if ($type == 0) {
-            $text = $tou[$tou_num] . $do[$do_num] . $wei[$wei_num] . $do[rand(0, 19)] . $tou[rand(0, 331)] . $do[rand(0, 19)] . $wei_num[rand(0, 327)] . $do[rand(0, 19)] . $wei_num[rand(0, 327)] . $do[rand(0, 19)] . $wei_num[rand(0, 327)] . $do[rand(0, 19)] . $wei_num[rand(0, 327)] . $do[rand(0, 19)] . $wei_num[rand(0, 327)] . $do[rand(0, 19)] . $wei_num[rand(0, 327)] . $do[rand(0, 19)] . $wei_num[rand(0, 327)] . $do[rand(0, 19)] . $wei_num[rand(0, 327)] . $do[rand(0, 19)] . $wei_num[rand(0, 327)];
+            $text = $tou[$tou_num].$do[$do_num].$wei[$wei_num].$do[rand(0, 19)].$tou[rand(0, 331)].$do[rand(0, 19)].$wei_num[rand(0, 327)].$do[rand(0, 19)].$wei_num[rand(0, 327)].$do[rand(0, 19)].$wei_num[rand(0, 327)].$do[rand(0, 19)].$wei_num[rand(0, 327)].$do[rand(0, 19)].$wei_num[rand(0, 327)].$do[rand(0, 19)].$wei_num[rand(0, 327)].$do[rand(0, 19)].$wei_num[rand(0, 327)].$do[rand(0, 19)].$wei_num[rand(0, 327)].$do[rand(0, 19)].$wei_num[rand(0, 327)];
         } else {
-            $text = $wei[$wei_num] . $tou[$tou_num];
+            $text = $wei[$wei_num].$tou[$tou_num];
         }
 
         return $text;
@@ -141,9 +179,9 @@ class DataMocker
         $numbMing = count($arrMing);
 
         $Xing = $arrXing[mt_rand(0, $numbXing - 1)];
-        $Ming = $arrMing[mt_rand(0, $numbMing - 1)] . $arrMing[mt_rand(0, $numbMing - 1)];
+        $Ming = $arrMing[mt_rand(0, $numbMing - 1)].$arrMing[mt_rand(0, $numbMing - 1)];
 
-        $name = $Xing . $Ming;
+        $name = $Xing.$Ming;
 
         return $name;
 
